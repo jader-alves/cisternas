@@ -12,7 +12,8 @@ async function buscaEndereco(cep) {
         const form =  document.querySelector('form');
         form.logradouro.value = consultaCEPConvertida.logradouro;
         form.cidade.value = consultaCEPConvertida.localidade;
-        form.bairro.value = consultaCEPConvertida.bairro;
+        if (form.bairro)
+            form.bairro.value = consultaCEPConvertida.bairro;
         form.estado.value = consultaCEPConvertida.uf;
         console.log(consultaCEPConvertida);
 

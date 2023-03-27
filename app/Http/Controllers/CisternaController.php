@@ -34,6 +34,13 @@ class CisternaController extends Controller
         $tipo_material = TipoMaterial::all();
         $tipo_construcao = TipoConstrucao::all();
         $cisterna = new Cisterna();
+
+        if (count($entidades)==0 || count($tipo_material)==0 || count($tipo_construcao)==0){
+            $cisternas = Cisterna::all();
+            return view('cisternas.index', compact('cisternas'));
+        }
+
+
         return view('cisternas.create', compact('cisterna', 'entidades', 'tipo_material','tipo_construcao'));
     }
 
