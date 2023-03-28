@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entidade;
 use Illuminate\Http\Request;
+use App\Cisterna;
 
 class EntidadeController extends Controller
 {
@@ -71,7 +72,8 @@ class EntidadeController extends Controller
     public function edit(Entidade $entidade)
     {
 
-        return view('entidades.edit', compact('entidade' ));
+        $cisternas_atendidas = Cisterna::where('entidade_id', $entidade->id)->get();
+        return view('entidades.edit', compact('entidade', 'cisternas_atendidas' ));
     }
 
     /**
